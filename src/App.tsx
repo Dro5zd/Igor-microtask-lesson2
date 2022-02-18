@@ -16,14 +16,28 @@ function App() {
         setMessage([addMessage, ...message])
     }
 
+    const ButtonFoo1 = (subscriber: string)=>{
+        console.log(subscriber)
+    }
+
+    const ButtonFoo2 = (subscriber: string)=>{
+        console.log(subscriber)
+    }
+
+    const StupidButton = () => {
+        console.log('Im Stupid Button')
+    }
+
 
     return (
         <div className={"App"}>
             <FullInput newMessage={newMessage}/>
             {message.map((el, index) => <div key={index}>{el.message}</div>)}
 
-            <Button name='MyYoutubeChanel-1'/>
-            <Button name='MyYoutubeChanel-2'/>
+            <Button name='MyYoutubeChanel-1' callback={()=>ButtonFoo1('Im Vasya')}/>
+            <Button name='MyYoutubeChanel-2' callback={()=>ButtonFoo2 ('Im Petya')}/>
+            <Button name='Stupid Button' callback={StupidButton}/>
+
 
         </div>
     );
