@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {FullInput} from "./components/FullInput";
 import {Button} from "./components/Button";
+import {NewComponent} from "./components/NewComponent";
 
 function App() {
 
@@ -42,6 +43,13 @@ function App() {
 //         setA(a=0)
 //     }
 
+    const students = [
+        {id: 1, name:'Senya', age:32},
+        {id: 2, name:'Venya', age:42},
+        {id: 3, name:'Jhenya', age:12},
+        {id: 4, name:'Benya', age:25}
+    ]
+
     return (
         <div className={"App"}>
             <FullInput newMessage={newMessage}/>
@@ -51,14 +59,14 @@ function App() {
             <Button name='MyYoutubeChanel-2' callback={() => ButtonFoo2('Im Petya')}/>
             <Button name='Stupid Button' callback={StupidButton}/>
 
-            //Микротаска UseState
-            {/*<h1>{a}</h1>*/}
 
+            {/*<h1>{a}</h1>*/}
             {/*<button onClick={onclickPlusHandler}> +++</button>*/}
             {/*<button onClick={onclick0Handler}> 0 </button>*/}
             {/*<button onClick={onclickMinusHandler}> --- </button>*/}
 
 
+            <NewComponent students={students}/>
         </div>
     );
 }
