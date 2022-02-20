@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
 
+type FilterType = 'all' | "ruble" | 'dollar'
+
 
 export function App() {
 
@@ -15,17 +17,42 @@ export function App() {
         {banknote: 'ruble', nominal: 50, number: ' v1234567890'},
     ])
 
+
+    let [filter, setFilter] = useState<FilterType>('all')
+
+    let currentMoney = money
+
+    if (filter === 'ruble') {
+        currentMoney = money.filter(f => f.banknote === 'ruble')
+    }
+    if (filter === 'dollar') {
+        currentMoney = money.filter(f => f.banknote === 'dollar')
+    }
+
+    let onClickFilterHandler = (title: FilterType) => {
+        setFilter(title)
+    }
+
+
     return (
-        <ul>
-            {money.map((objFromMoneyArr, index) => {
-                return (
-                    <li key={index}>
-                        <span> {objFromMoneyArr.banknote}</span>
-                        <span> {objFromMoneyArr.nominal}</span>
-                        <span> {objFromMoneyArr.number}</span>
-                    </li>
-                )
-            })}
-        </ul>
+        <div>
+            <ul>
+                {currentMoney.map((objFromMoneyArr, index) => {
+                    return (
+                        <li key={index}>
+                            <span> {objFromMoneyArr.banknote}</span>
+                            <span> {objFromMoneyArr.nominal}</span>
+                            <span> {objFromMoneyArr.number}</span>
+                        </li>
+                    )
+                })}
+            </ul>
+            <button onClick={() => onClickFilterHandler('ruble')}>ruble</button>
+            <button onClick={() => onClickFilterHandler('dollar')}>dollar</button>
+            <button onClick={() => onClickFilterHandler('all')}>all</button>
+
+
+        </div>
+
     )
 }
