@@ -7,6 +7,8 @@ type CurrentMoney = {
     number: string
 }
 
+type FilterType = 'all' | "ruble" | 'dollar'
+
 
 type NewComponentMoneyProps = {
     currentMoney: CurrentMoney[]
