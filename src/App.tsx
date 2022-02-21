@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {NewComponentMoney} from "./components/NewComponentMoney";
 
-type FilterType = 'all' | "ruble" | 'dollar'
+export type FilterType = 'all' | "ruble" | 'dollar'
 
 
 export function App() {
@@ -30,14 +30,9 @@ export function App() {
         currentMoney = money.filter(f => f.banknote === 'dollar')
     }
 
-    let onClickFilterHandler = (title: FilterType) => {
-        setFilter(title)
-    }
-
 
     return (
-
-        <NewComponentMoney currentMoney={currentMoney} callback={onClickFilterHandler}/>
+        <NewComponentMoney currentMoney={currentMoney} callback={setFilter}/>
 
         // <>
         //     <ul>

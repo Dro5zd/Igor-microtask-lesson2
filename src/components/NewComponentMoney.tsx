@@ -1,4 +1,5 @@
 import React from "react";
+import {FilterType} from "../App";
 
 
 type CurrentMoney = {
@@ -7,16 +8,16 @@ type CurrentMoney = {
     number: string
 }
 
-type FilterType = 'all' | "ruble" | 'dollar'
-
-
 type NewComponentMoneyProps = {
     currentMoney: CurrentMoney[]
-    callback: (title: FilterType) => void
+    callback: (title: FilterType)=>void
 }
 
 export const NewComponentMoney = (props: NewComponentMoneyProps) => {
 
+    let onClickFilterHandler = (title: FilterType) => {
+        props.callback(title)
+    }
     return (
         <>
             <ul>
@@ -30,9 +31,9 @@ export const NewComponentMoney = (props: NewComponentMoneyProps) => {
                     )
                 })}
             </ul>
-            <button onClick={() => props.callback('ruble')}>ruble</button>
-            <button onClick={() => props.callback('dollar')}>dollar</button>
-            <button onClick={() => props.callback('all')}>all</button>
+            <button onClick={() => onClickFilterHandler('ruble')}>ruble</button>
+            <button onClick={() => onClickFilterHandler('dollar')}>dollar</button>
+            <button onClick={() => onClickFilterHandler('all')}>all</button>
 
 
         </>
