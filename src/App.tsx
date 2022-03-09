@@ -30,7 +30,6 @@ export function App() {
         currentMoney = money.filter(f => f.banknote === 'dollar')
     }
 
-
     return (
         <NewComponentMoney currentMoney={currentMoney} callback={setFilter}/>
 
